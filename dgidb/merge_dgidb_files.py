@@ -4,7 +4,7 @@ from collections import defaultdict
 
 cats_file = open("dgidb.categories.tsv", "r")
 ints_file = open("dgidb.interactions.tsv", "r")
-gene_coords = open("sorted.ensembl.gene.coords", "r")
+gene_coords = open("../ensembl/sorted.ensembl.gene.coords", "r")
 
 file_out = open("dgidb.summaries.bed", "w")
 print("#chromosome\tstart\tstop\tgene\tdrug\tinteraction\tcategories", file=file_out)
