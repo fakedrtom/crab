@@ -4,7 +4,7 @@ from collections import defaultdict
 
 gene_file = open("tmp.civic_genes.bed", "r")
 gene_out = open("civic_genes_summaries.bed", "w")
-print("#chromosome\tstart\tstop\tgene\tn_variant\tvariant_IDs\tn_evidence\tevidence_IDs\tmax_evidence\tmax_rating\tevidence_type\tevidence_direction\tclinical_significance\tvariant_origin\tdisease", file=gene_out)
+print("#chromosome\tstart\tstop\tgene\tn_variant\tvariant_IDs\tn_evidence\tevidence_IDs\tmax_evidence\tmax_rating\tevidence_type\tevidence_direction\tclinical_significance\tvariant_origin\tdisease\tmax_score", file=gene_out)
 
 coords = {}
 variants = defaultdict(list)
@@ -16,6 +16,7 @@ directions = defaultdict(list)
 clins = defaultdict(list)
 origins = defaultdict(list)
 diseases = defaultdict(list)
+id_score = {}
 
 for i in gene_file:
     line = i.rsplit("\t")
@@ -26,7 +27,9 @@ for i in gene_file:
     coords[gene]=[chrom, start, end]
     var_id = line[9] if line[9] != "" else 'None'
     variants[gene].append(var_id)
-    evi_level = line[12] if len(line) > 12 else 'None' 
+    var_score = line[11] if line[11] != "" else 'None'
+    id_score[var_id] = var_score
+    evi_level = line[13] if len(line) > 13 else 'None' 
     if evi_level is 'A':
         evi_level = 5
     elif evi_level is 'B':
@@ -40,19 +43,19 @@ for i in gene_file:
     elif evi_level is 'None':
         evi_level = 0
     levels[gene].append(evi_level)
-    rating = line[15] if len(line) > 15 else 0
+    rating = line[16] if len(line) > 16 else 0
     ratings[gene].append(rating)
-    evi_id = line[16] if len(line) > 16 else 'None'
+    evi_id = line[17] if len(line) > 17 else 'None'
     evidences[gene].append(evi_id.rstrip())
-    evi_type = line[11] if len(line) > 11 else 'None'
+    evi_type = line[12] if len(line) > 12 else 'None'
     types[gene].append(evi_type.rstrip())
-    evi_dir = line[13] if len(line) > 13 else 'None'
+    evi_dir = line[14] if len(line) > 14 else 'None'
     directions[gene].append(evi_dir.rstrip())
-    clin_sig = line[14] if len(line) > 14 else 'None'
+    clin_sig = line[15] if len(line) > 15 else 'None'
     clins[gene].append(clin_sig.rstrip())
-    origin = line[17] if len(line) > 17 else 'None'
+    origin = line[18] if len(line) > 18 else 'None'
     origins[gene].append(origin.rstrip())
-    disease = line[18] if len(line) > 18 else 'None'
+    disease = line[19] if len(line) > 19 else 'None'
     diseases[gene].append(disease.rstrip())
 
 for gene in coords:
@@ -72,13 +75,29 @@ for gene in coords:
     max_rating = max(ratings[gene])
     num_var = len(set(variants[gene]))
     var_ids = set(variants[gene])
+    scores = []
+    for id in var_ids:
+        scores.append(id_score[id])
+    max_score = max(scores)
     num_evi = len(set(evidences[gene]))
     evi_ids = set(evidences[gene])
+    if len(evi_ids) > 1 and 'None' in evi_ids:
+        evi_ids.remove('None')
     evi_types = set(types[gene])
+    if len(evi_types) > 1 and 'No Evidence' in evi_types:
+        evi_types.remove('No Evidence')
     evi_dirs = set(directions[gene])
+    if len(evi_dirs) > 1 and 'None' in evi_dirs:
+        evi_dirs.remove('None')
     clin_sigs = set(clins[gene])
+    if len(clin_sigs) > 1 and 'None' in clin_sigs:
+        clin_sigs.remove('None')
     origs = set(origins[gene])
+    if len(origs) > 1 and 'None' in origs:
+        origs.remove('None')
     subtypes = set(diseases[gene])
+    if len(subtypes) > 1 and 'None' in subtypes:
+        subtypes.remove('None')
     if max_level is 'None':
         num_evi = 0
-    print("\t".join(coords[gene]) + "\t" + gene + "\t" + str(num_var) + "\t" + ",".join(var_ids) + "\t" + str(num_evi) + "\t" + ",".join(evi_ids) + "\t" + max_level + "\t" + str(max_rating) + "\t" + ",".join(evi_types) + "\t" + ",".join(evi_dirs) + "\t" + ",".join(clin_sigs) + "\t" + ",".join(origs) + "\t" + ",".join(subtypes), file=gene_out)    
+    print("\t".join(coords[gene]) + "\t" + gene + "\t" + str(num_var) + "\t" + ",".join(var_ids) + "\t" + str(num_evi) + "\t" + ",".join(evi_ids) + "\t" + max_level + "\t" + str(max_rating) + "\t" + ",".join(evi_types) + "\t" + ",".join(evi_dirs) + "\t" + ",".join(clin_sigs) + "\t" + ",".join(origs) + "\t" + ",".join(subtypes) + "\t" + str(max_score), file=gene_out)    
