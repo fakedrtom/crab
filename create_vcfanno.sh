@@ -25,7 +25,7 @@ echo 'ops=["self","self","self","self"]' >> vcfanno.conf
 #Adding DoCM
 printf "\n" >> vcfanno.conf
 echo '[[annotation]]' >> vcfanno.conf
-echo 'file="'$DIR'/docm/docm.bed"' >> vcfanno.conf
+echo 'file="'$DIR'/docm/docm.bed.gz"' >> vcfanno.conf
 echo 'columns=[6,6,7,8,9]' >> vcfanno.conf
 echo 'names=["in_docm","docm_gene","docm_mutation_type","docm_disease","docm_pubmed"]' >> vcfanno.conf
 echo 'ops=["flag","self","self","self","self"]' >> vcfanno.conf
