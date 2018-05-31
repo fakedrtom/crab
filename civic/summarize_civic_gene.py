@@ -29,7 +29,9 @@ for i in gene_file:
     variants[gene].append(var_id)
     var_score = line[11] if line[11] != "" else 'None'
     id_score[var_id] = var_score
-    evi_level = line[13] if len(line) > 13 else 'None' 
+    evi_type = line[12] if line[12] != "" else 'None'
+    types[gene].append(evi_type.rstrip())
+    evi_level = line[13] if line[13] != "" else 'None' 
     if evi_level is 'A':
         evi_level = 5
     elif evi_level is 'B':
@@ -43,19 +45,17 @@ for i in gene_file:
     elif evi_level is 'None':
         evi_level = 0
     levels[gene].append(evi_level)
-    rating = line[16] if len(line) > 16 else 0
-    ratings[gene].append(rating)
-    evi_id = line[17] if len(line) > 17 else 'None'
-    evidences[gene].append(evi_id.rstrip())
-    evi_type = line[12] if len(line) > 12 else 'None'
-    types[gene].append(evi_type.rstrip())
-    evi_dir = line[14] if len(line) > 14 else 'None'
+    evi_dir = line[14] if line[14] != "" else 'None'
     directions[gene].append(evi_dir.rstrip())
-    clin_sig = line[15] if len(line) > 15 else 'None'
+    clin_sig = line[15] if line[15] != "" else 'None'
     clins[gene].append(clin_sig.rstrip())
-    origin = line[18] if len(line) > 18 else 'None'
+    rating = line[16] if line[16] != "" else 0
+    ratings[gene].append(rating)
+    evi_id = line[17] if line[17] != "" else 'None'
+    evidences[gene].append(evi_id.rstrip())
+    origin = line[18] if line[18] != "" else 'None'
     origins[gene].append(origin.rstrip())
-    disease = line[19] if len(line) > 19 else 'None'
+    disease = line[19] if line[19] != "" else 'None'
     diseases[gene].append(disease.rstrip())
 
 for gene in coords:
@@ -79,13 +79,13 @@ for gene in coords:
     for id in var_ids:
         scores.append(id_score[id])
     max_score = max(scores)
-    num_evi = len(set(evidences[gene]))
     evi_ids = set(evidences[gene])
     if len(evi_ids) > 1 and 'None' in evi_ids:
         evi_ids.remove('None')
+    num_evi = len(evi_ids)
     evi_types = set(types[gene])
-    if len(evi_types) > 1 and 'No Evidence' in evi_types:
-        evi_types.remove('No Evidence')
+    if len(evi_types) > 1 and 'None' in evi_types:
+        evi_types.remove('None')
     evi_dirs = set(directions[gene])
     if len(evi_dirs) > 1 and 'None' in evi_dirs:
         evi_dirs.remove('None')
