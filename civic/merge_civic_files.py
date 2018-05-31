@@ -50,7 +50,7 @@ for i in var_file:
     variant[var_id].append([chrom, str(start), end, ref, alt, var_id, var_type, var_score])
     if alt is not "":
         if var_id not in evidence:
-            print("\t".join(map(str, (chrom, start, end, ref, alt, var_id, var_type, var_score))) + "\t" + "None\tNone\tNone\tNone\tNone\tNone\tNone\tNone", file=variant_out)
+            print("\t".join(map(str, (chrom, start, end, ref, alt, var_id, var_type, var_score))) + "\t" + "none\tnone\tnone\tnone\tnone\tnone\tnone\tnone", file=variant_out)
         if var_id in evidence:    
             for j in evidence[var_id]:
                 print("\t".join(map(str, (chrom, start, end, ref, alt, var_id, var_type, var_score))) + "\t" + "\t".join(j), file=variant_out)
@@ -70,12 +70,12 @@ for i in sum_file:
     gene = line[2]
     if gene in coords:
         if gene not in genes_ids:
-            print("\t".join(coords[gene]) + "\t" + gene + "\t" + "None\tNone\tNone\tNone\tNone\tNone\tNone\tNone\tNone\tNone\tNone\tNone\tNone\tNone\tNone\tNone", file=gene_out)
+            print("\t".join(coords[gene]) + "\t" + gene + "\t" + "none\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone", file=gene_out)
         if gene in genes_ids:
             for j in genes_ids[gene]:
                 var = variant[j][0]
                 if j not in evidence:
-                    print("\t".join(coords[gene]) + "\t" + gene + "\t" + "\t".join(var) + "\t" + "None\tNone\tNone\tNone\tNone\tNone\tNone\tNone", file=gene_out)
+                    print("\t".join(coords[gene]) + "\t" + gene + "\t" + "\t".join(var) + "\t" + "none\tnone\tnone\tnone\tnone\tnone\tnone\tnone", file=gene_out)
                 if j in evidence:
                     for k in evidence[j]:
                         print("\t".join(coords[gene]) + "\t" + gene + "\t" + "\t".join(var) + "\t" + "\t".join(k), file=gene_out)
