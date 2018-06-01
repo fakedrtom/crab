@@ -12,11 +12,12 @@ curl -o nightly-ClinicalEvidenceSummaries.tsv -L https://civicdb.org/downloads/n
 echo "Creating civic_genes, civic_gene_summaries, and civic_variants BED files"
 python merge_civic_files.py
 python summarize_civic_gene.py
+python summarize_civic_variant.py
 
 #Using gsort, sort and bgzip the bed files, remove the extra, non-gzipped copy of the file
 echo "Sorted and gzipping the BED files"
-gsort civic_variants.bed /Users/tom/work/genome_ref/genome.nochr.file | bgzip -c > civic_variants.bed.gz
-rm -r -f civic_variants.bed
+gsort civic_variants_summaries.bed /Users/tom/work/genome_ref/genome.nochr.file | bgzip -c > civic_variants_summaries.bed.gz
+rm -r -f civic_variants_summaries.bed
 #gsort civic_genes.bed /Users/tom/work/genome_ref/genome.nochr.file | bgzip -c > civic_genes.bed.gz
 #rm -r -f civic_genes.bed
 gsort civic_genes_summaries.bed /Users/tom/work/genome_ref/genome.nochr.file | bgzip -c > civic_genes_summaries.bed.gz
@@ -24,6 +25,5 @@ rm -r -f civic_genes_summaries.bed
 
 #Create an index, using tabix, of the zipped bed files
 echo "Creating tabix indices of the BED files"
-tabix -p bed civic_variants.bed.gz
-#tabix -p bed civic_genes.bed.gz
+tabix -p bed civic_variants_summaries.bed.gz
 tabix -p bed civic_genes_summaries.bed.gz

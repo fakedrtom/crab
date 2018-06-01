@@ -7,8 +7,8 @@ var_file = open("nightly-VariantSummaries.tsv", "r")
 sum_file = open("nightly-GeneSummaries.tsv", "r")
 gene_coords = open("../ensembl/sorted.ensembl.gene.coords", "r")
 
-variant_out = open("civic_variants.bed", "w")
-print("#chromosome\tstart\tstop\tref\talt\tvariant_id\tvariant_types\tcivic_score\tevidence_type\tevidence_level\tevidence_direction\tclinical_significance\trating\tevidence_id\tvariant_origin\tdisease", file=variant_out)
+variant_out = open("tmp.civic_variants.bed", "w")
+#print("#chromosome\tstart\tstop\tref\talt\tvariant_id\tvariant_types\tcivic_score\tevidence_type\tevidence_level\tevidence_direction\tclinical_significance\trating\tevidence_id\tvariant_origin\tdisease", file=variant_out)
 gene_out = open("tmp.civic_genes.bed", "w")
 
 evidence = {}
@@ -52,8 +52,8 @@ for i in var_file:
         if var_id not in evidence:
             print("\t".join(map(str, (chrom, start, end, ref, alt, var_id, var_type, var_score))) + "\t" + "none\tnone\tnone\tnone\tnone\tnone\tnone\tnone", file=variant_out)
         if var_id in evidence:    
-            for j in evidence[var_id]:
-                print("\t".join(map(str, (chrom, start, end, ref, alt, var_id, var_type, var_score))) + "\t" + "\t".join(j), file=variant_out)
+                for j in evidence[var_id]:
+                    print("\t".join(map(str, (chrom, start, end, ref, alt, var_id, var_type, var_score))) + "\t" + "\t".join(j), file=variant_out)
 
 coords = {}
 for i in gene_coords:
