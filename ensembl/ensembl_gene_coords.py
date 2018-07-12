@@ -42,8 +42,8 @@ for line in ensembl:
         enst_id = entry[1]
         gene = names[enst_id]
         chrom = entry[2]
-        start = entry[4]
-        end = entry[5]
+        start = int(entry[4])
+        end = int(entry[5])
         if "_" not in chrom:
             chroms[gene] = chrom
             coords[gene].append(start)
