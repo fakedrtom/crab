@@ -25,4 +25,4 @@ rm -r -f onco_muts.bed
 #Create an index, using tabix, of the zipped bed files
 echo "Creating tabix indices of the BED files"
 tabix -p bed ccg.bed.gz
-tabix -p bed onco_muts.gz
+tabix -p bed onco_muts.bed.gz
