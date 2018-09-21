@@ -34,17 +34,17 @@ for i in gene_file:
     evi_type = line[12] if line[12] != "" else 'none'
     types[gene].append(evi_type.rstrip())
     evi_level = line[13] if line[13] != "" else 'none' 
-    if evi_level is 'A':
+    if evi_level == 'A':
         evi_level = 5
-    elif evi_level is 'B':
+    elif evi_level == 'B':
         evi_level = 4
-    elif evi_level is 'C':
+    elif evi_level == 'C':
         evi_level = 3
-    elif evi_level is 'D':
+    elif evi_level == 'D':
         evi_level = 2
-    elif evi_level is 'E':
+    elif evi_level == 'E':
         evi_level = 1
-    elif evi_level is 'none':
+    elif evi_level == 'none':
         evi_level = 0
     levels[gene].append(evi_level)
     evi_dir = line[14] if line[14] != "" else 'none'
@@ -52,6 +52,8 @@ for i in gene_file:
     clin_sig = line[15] if line[15] != "" else 'none'
     clins[gene].append(clin_sig.rstrip())
     rating = line[16] if line[16] != "" else 0
+    if rating == 'none':
+        rating = 0
     ratings[gene].append(rating)
     evi_id = line[17] if line[17] != "" else 'none'
     evidences[gene].append(evi_id.rstrip())
@@ -66,17 +68,17 @@ for id in id_score:
 
 for gene in coords:
     max_level = max(levels[gene])
-    if max_level is 5:
+    if max_level == 5:
         max_level = 'A'
-    if max_level is 4:
+    if max_level == 4:
         max_level = 'B'
-    if max_level is 3:
+    if max_level == 3:
         max_level = 'C'
-    if max_level is 2:
+    if max_level == 2:
         max_level = 'D'
-    if max_level is 1:
+    if max_level == 1:
         max_level = 'E'
-    if max_level is 0:
+    if max_level == 0:
         max_level = 'none'
     max_rating = max(ratings[gene])
     num_var = len(set(variants[gene]))
@@ -85,7 +87,7 @@ for gene in coords:
     for id in var_ids:
         if id in id_score:
             scores.append(id_score[id])
-    max_score = max(scores)
+    max_score = max(scores) if len(scores) > 0 else 0
     evi_ids = set(evidences[gene])
     if len(evi_ids) > 1 and 'none' in evi_ids:
         evi_ids.remove('none')

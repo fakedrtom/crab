@@ -45,6 +45,8 @@ for i in var_file:
     alt = line[11]
     var_type = line[19]
     var_score = line[22].rstrip()
+    if len(var_score.split(' ')) > 1:
+        var_score = 'none'
     if var_id not in variant:
         variant[var_id] = []
     variant[var_id].append([chrom, str(start), end, ref, alt, var_id, var_type, var_score])

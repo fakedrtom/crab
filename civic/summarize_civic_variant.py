@@ -28,7 +28,8 @@ for i in var_file:
     varid = line[5]
     vartype = line[6] if line[6] != "" else 'none'
     score = line[7]
-    id_score[varid] = score
+    if score != 'none':
+        id_score[varid] = score
     coords[varid]=[chrom, start, end, ref, alt, varid, vartype, score]
     evi_type = line[8] if line[8] != "" else 'none'
     types[varid].append(evi_type.rstrip())
