@@ -26,14 +26,14 @@ for i in gene_file:
     end = line[2]
     gene = line[3]
     coords[gene]=[chrom, start, end]
-    var_id = line[9] if line[9] != "" else 'none'
+    var_id = line[9] if line[9] != "" else 'None'
     variants[gene].append(var_id)
-    var_score = line[11] if line[11] != "" else 'none'
-    if var_score != 'none':
+    var_score = line[11] if line[11] != "" else 'None'
+    if var_score != 'None':
         id_score[var_id] = var_score
-    evi_type = line[12] if line[12] != "" else 'none'
+    evi_type = line[12] if line[12] != "" else 'None'
     types[gene].append(evi_type.rstrip())
-    evi_level = line[13] if line[13] != "" else 'none' 
+    evi_level = line[13] if line[13] != "" else 'None' 
     if evi_level == 'A':
         evi_level = 5
     elif evi_level == 'B':
@@ -44,22 +44,22 @@ for i in gene_file:
         evi_level = 2
     elif evi_level == 'E':
         evi_level = 1
-    elif evi_level == 'none':
+    elif evi_level == 'None':
         evi_level = 0
     levels[gene].append(evi_level)
-    evi_dir = line[14] if line[14] != "" else 'none'
+    evi_dir = line[14] if line[14] != "" else 'None'
     directions[gene].append(evi_dir.rstrip())
-    clin_sig = line[15] if line[15] != "" else 'none'
+    clin_sig = line[15] if line[15] != "" else 'None'
     clins[gene].append(clin_sig.rstrip())
     rating = line[16] if line[16] != "" else 0
-    if rating == 'none':
+    if rating == 'None':
         rating = 0
     ratings[gene].append(rating)
-    evi_id = line[17] if line[17] != "" else 'none'
+    evi_id = line[17] if line[17] != "" else 'None'
     evidences[gene].append(evi_id.rstrip())
-    origin = line[18] if line[18] != "" else 'none'
+    origin = line[18] if line[18] != "" else 'None'
     origins[gene].append(origin.rstrip())
-    disease = line[19] if line[19] != "" else 'none'
+    disease = line[19] if line[19] != "" else 'None'
     diseases[gene].append(disease.rstrip())
 
 score_list = []
@@ -79,7 +79,7 @@ for gene in coords:
     if max_level == 1:
         max_level = 'E'
     if max_level == 0:
-        max_level = 'none'
+        max_level = 'None'
     max_rating = max(ratings[gene])
     num_var = len(set(variants[gene]))
     var_ids = set(variants[gene])
@@ -89,25 +89,25 @@ for gene in coords:
             scores.append(id_score[id])
     max_score = max(scores) if len(scores) > 0 else 0
     evi_ids = set(evidences[gene])
-    if len(evi_ids) > 1 and 'none' in evi_ids:
-        evi_ids.remove('none')
+    if len(evi_ids) > 1 and 'None' in evi_ids:
+        evi_ids.remove('None')
     num_evi = len(evi_ids)
     evi_types = set(types[gene])
-    if len(evi_types) > 1 and 'none' in evi_types:
-        evi_types.remove('none')
+    if len(evi_types) > 1 and 'None' in evi_types:
+        evi_types.remove('None')
     evi_dirs = set(directions[gene])
-    if len(evi_dirs) > 1 and 'none' in evi_dirs:
-        evi_dirs.remove('none')
+    if len(evi_dirs) > 1 and 'None' in evi_dirs:
+        evi_dirs.remove('None')
     clin_sigs = set(clins[gene])
-    if len(clin_sigs) > 1 and 'none' in clin_sigs:
-        clin_sigs.remove('none')
+    if len(clin_sigs) > 1 and 'None' in clin_sigs:
+        clin_sigs.remove('None')
     origs = set(origins[gene])
-    if len(origs) > 1 and 'none' in origs:
-        origs.remove('none')
+    if len(origs) > 1 and 'None' in origs:
+        origs.remove('None')
     subtypes = set(diseases[gene])
-    if len(subtypes) > 1 and 'none' in subtypes:
-        subtypes.remove('none')
-    if max_level == 'none':
+    if len(subtypes) > 1 and 'None' in subtypes:
+        subtypes.remove('None')
+    if max_level == 'None':
         num_evi = 0
     score_per = round(stats.percentileofscore(score_list, float(max_score)),3)
     print("\t".join(coords[gene]) + "\t" + gene + "\t" + str(num_var) + "\t" + ",".join(var_ids) + "\t" + str(num_evi) + "\t" + ",".join(evi_ids) + "\t" + max_level + "\t" + str(max_rating) + "\t" + ",".join(evi_types) + "\t" + ",".join(evi_dirs) + "\t" + ",".join(clin_sigs) + "\t" + ",".join(origs) + "\t" + ",".join(subtypes) + "\t" + str(max_score) + "\t" + str(score_per), file=gene_out)    

@@ -94,22 +94,22 @@ for line in muttrans:
 uniq_genes = set(genes)
 for gene in uniq_genes:
     if gene not in actions:
-        actions[gene] = 'none'
+        actions[gene] = 'None'
     if gene in changes:
         uniq_c = set(changes[gene])
     else:
-        uniq_c = ['none']
+        uniq_c = ['None']
     if gene in trans:
         uniq_t = set(trans[gene])
     else:
-        uniq_t = ['none']
+        uniq_t = ['None']
     if gene in diseases:
         uniq_d = set(diseases[gene])
     else:
-        uniq_d = ['none']
+        uniq_d = ['None']
     if gene in sources:
         uniq_s = set(sources[gene])
     else:
-        uniq_s = ['none']
+        uniq_s = ['None']
     if gene in coords:
         print('\t'.join(coords[gene]) + "\t" + gene + "\t" + actions[gene] + "\t" + ','.join(uniq_c) + "\t" + ','.join(uniq_t) + "\t" + ','.join(uniq_d) + "\t" + ','.join(uniq_s), file=out_file)
