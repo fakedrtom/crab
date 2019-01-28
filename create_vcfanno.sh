@@ -34,14 +34,14 @@ echo 'ops=["flag","self","self","self","self"]' >> vcfanno.conf
 printf "\n" >> vcfanno.conf
 echo '[[annotation]]' >> vcfanno.conf
 echo 'file="'$DIR'/cgi/onco_muts.bed.gz"' >> vcfanno.conf
-echo 'columns=[6,7,9]' >> vcfanno.conf
-echo 'names=["in_cgi", "cgi_mutation_type", "cgi_reported_by"]' >> vcfanno.conf
+echo 'columns=[6,7,8,9,10]' >> vcfanno.conf
+echo 'names=["in_cgi", "cgi_mutation_type", "cgi_cancer_types", "cgi_abbreviations", "cgi_reported_by"]' >> vcfanno.conf
 echo 'ops=["flag", "self", "self"]' >> vcfanno.conf
 printf "\n" >> vcfanno.conf
 echo '[[annotation]]' >> vcfanno.conf
 echo 'file="'$DIR'/cgi/ccg.bed.gz"' >> vcfanno.conf
-echo 'columns=[4,5,6,7,8,9]' >> vcfanno.conf
-echo 'names=["cgi_gene", "cgi_gene_tumorigenesis", "cgi_gene_alterations", "cgi_gene_translocations", "cgi_gene_cancer_types", "cgi_gene_sources"]' >> vcfanno.conf
+echo 'columns=[4,5,6,7,8,9,10]' >> vcfanno.conf
+echo 'names=["cgi_gene", "cgi_gene_tumorigenesis", "cgi_gene_alterations", "cgi_gene_translocations", "cgi_gene_cancer_types", "cgi_gene_abbreviations", "cgi_gene_sources"]' >> vcfanno.conf
 echo 'ops=["self", "self", "self", "self", "self", "self"]' >> vcfanno.conf
 
 #Adding CHASMPLUS
