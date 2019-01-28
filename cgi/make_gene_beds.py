@@ -7,7 +7,7 @@ muttrans = open("cancer_genes_upon_trans.tsv", "r")
 moa = open("gene_MoA.tsv", "r")
 gene_coords = open("../ensembl/sorted.ensembl.gene.coords", "r")
 out_file = open("ccg.bed", "w")
-print("#chromosome\tstart\tend\tgene\ttumorigenesis\talterations\ttranslocations\tcancer_types\tsources", file=out_file)
+print("#chromosome\tstart\tend\tgene\ttumorigenesis\talterations\ttranslocations\tcancer_types\tabbreviations\tsources", file=out_file)
 
 coords = {}
 for i in gene_coords:
@@ -19,11 +19,13 @@ for i in gene_coords:
     coords[gene.rstrip()]=[chrom, start, end]
 
 cancers = {}
+rev_cancers = {}
 for line in cancer_names:
     fields = line.rstrip("\n").split("\t")
     cancer = fields[1]
     abr = fields[0]
     cancers[abr] = cancer
+    rev_cancers[cancer] = abr
 
 actions = {}
 for line in moa:
@@ -94,22 +96,31 @@ for line in muttrans:
 uniq_genes = set(genes)
 for gene in uniq_genes:
     if gene not in actions:
-        actions[gene] = 'None'
+        actions[gene] = 'none'
     if gene in changes:
         uniq_c = set(changes[gene])
     else:
-        uniq_c = ['None']
+        uniq_c = ['none']
     if gene in trans:
         uniq_t = set(trans[gene])
     else:
-        uniq_t = ['None']
+        uniq_t = ['none']
     if gene in diseases:
         uniq_d = set(diseases[gene])
     else:
-        uniq_d = ['None']
+        uniq_d = ['none']
+    abbr = []
+    for s in uniq_d:
+        if s == 'none':
+            abbr.append(s)
+        else:
+            if s.lower() in rev_cancers:
+                abbr.append(rev_cancers[s.lower()])
+            if s.lower() not in rev_cancers:
+                print(s.lower()+' not recognized')
     if gene in sources:
         uniq_s = set(sources[gene])
     else:
-        uniq_s = ['None']
+        uniq_s = ['none']
     if gene in coords:
-        print('\t'.join(coords[gene]) + "\t" + gene + "\t" + actions[gene] + "\t" + ','.join(uniq_c) + "\t" + ','.join(uniq_t) + "\t" + ','.join(uniq_d) + "\t" + ','.join(uniq_s), file=out_file)
+        print('\t'.join(coords[gene]) + "\t" + gene + "\t" + actions[gene] + "\t" + ','.join(sorted(uniq_c)) + "\t" + ','.join(sorted(uniq_t)) + "\t" + ','.join(sorted(uniq_d)) + "\t" + ",".join(sorted(set(abbr))) + "\t" + ','.join(sorted(uniq_s)), file=out_file)

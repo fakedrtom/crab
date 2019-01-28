@@ -6,7 +6,7 @@ gene_coords = open("../ensembl/sorted.ensembl.gene.coords", "r")
 cancer_names = open("master_cancer_acronyms.txt", "r")
 
 out_file = open("onco_muts.bed", "w")
-print("#chromosome\tstart\tend\tref\talt\tgene\tmutation_type\tcancer_types\tsources", file=out_file)
+print("#chromosome\tstart\tend\tref\talt\tgene\tmutation_type\tcancer_types\tabbreviations\tsources", file=out_file)
 
 cancers = {}
 for line in cancer_names:
@@ -44,4 +44,4 @@ for line in file:
                 if abr not in cancers:
                     continue
                 cancer_types.append(cancers[abr])
-            print("\t".join(coord) + "\t" + gene + "\t" + muttype + "\t" + ",".join(cancer_types) + "\t" + ','.join(sources), file=out_file)
+            print("\t".join(coord) + "\t" + gene + "\t" + muttype + "\t" + ",".join(sorted(cancer_types)) + "\t" + ",".join(sorted(set(abrs))) + "\t" + ','.join(sources), file=out_file)
