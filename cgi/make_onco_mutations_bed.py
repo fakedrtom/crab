@@ -15,19 +15,21 @@ for line in cancer_names:
     abr = fields[0]
     cancers[abr] = cancer
 
+cols = {}
 for line in file:
-    if line.startswith("gene"):
-        continue
     fields = line.rstrip("\n").split("\t")
-    gene = fields[0]
-    ghgvs = fields[1].split('__')
-    ppos = fields[2]
-    trans = fields[3]
-    info = fields[4]
-    muttype = fields[5]
-    abrs = fields[6].split('__')
-    sources = fields[7].split('__')
-    reference = fields[8]
+    if fields[0] == 'gene':
+        cols = dict(zip(fields, range(len(fields))))
+        continue
+    gene = fields[cols['gene']]
+    ghgvs = fields[cols['gdna']].split('__')
+    ppos = fields[cols['protein']]
+    trans = fields[cols['transcript']]
+    info = fields[cols['info']]
+    muttype = fields[cols['context']]
+    abrs = fields[cols['cancer_acronym']].split('__')
+    sources = fields[cols['source']].split('__')
+    reference = fields[cols['reference']]
     for var in ghgvs:
         if 'del' not in var and 'dup' not in var and 'ins' not in var and '>' in var:
             fix = var.split(':g.')

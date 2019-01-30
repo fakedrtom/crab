@@ -28,10 +28,14 @@ for line in cancer_names:
     rev_cancers[cancer] = abr
 
 actions = {}
+act_cols = {}
 for line in moa:
     fields = line.rstrip("\n").split("\t")
-    gene = fields[0]
-    act = fields[1]
+    if fields[0] == 'gene':
+        act_cols = dict(zip(fields, range(len(fields))))
+        continue
+    gene = fields[act_cols['gene']]
+    act = fields[act_cols['gene_MoA']]
     if act == 'Act':
         act = 'oncogene'
     if act == 'LoF':
@@ -43,34 +47,39 @@ changes = {}
 diseases = {}
 trans = {}
 sources = {}
+mut_cols = {}
 
 for line in muts:
-    if line.startswith('gene'):
-        continue
     fields = line.rstrip("\n").split("\t")
-    gene = fields[0]
+    if fields[0] == 'gene':
+        mut_cols = dict(zip(fields, range(len(fields))))
+        continue
+    gene = fields[mut_cols['gene']]
     genes.append(gene)
-    muttype = fields[1]
+    muttype = fields[mut_cols['alteration']]
     if gene not in changes:
         changes[gene] = []
     changes[gene].append(muttype)
-    abr = fields[2]
+    abr = fields[mut_cols['cancer_acronym']]
     if gene not in diseases:
         diseases[gene] = []
     if abr in cancers:
         diseases[gene].append(cancers[abr])
-    srcs = fields[3].split(',')
+    srcs = fields[mut_cols['source']].split(',')
     if gene not in sources:
         sources[gene] = []
     for src in srcs:
         sources[gene].append(src)
 
+trn_cols = {}
+
 for line in muttrans:
-    if line.startswith('translocation'):
-        continue
     fields = line.rstrip("\n").split("\t")
-    trs = fields[0].split('__')
-    gene = fields[1]
+    if fields[0] == 'translocation':
+        trn_cols = dict(zip(fields, range(len(fields))))
+        continue
+    trs = fields[trn_cols['translocation']].split('__')
+    gene = fields[trn_cols['effector_gene']]
     genes.append(gene)
     if gene in trs:
         trs.remove(gene)
@@ -81,13 +90,13 @@ for line in muttrans:
         if gene not in trans:
             trans[gene] = []
         trans[gene].append(tran)
-    abrs = fields[2].split(';')
+    abrs = fields[trn_cols['cancer_acronym']].split(';')
     if gene not in diseases:
         diseases[gene] = []
     for abr in abrs:
         if abr in cancers:
             diseases[gene].append(cancers[abr])
-    srcs = fields[3].split(';')
+    srcs = fields[trn_cols['source']].split(';')
     if gene not in sources:
         sources[gene] = []
     for src in srcs:

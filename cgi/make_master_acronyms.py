@@ -6,13 +6,16 @@ txt = open("cancer_acronyms.txt", "r")
 out_file = open("master_cancer_acronyms.txt", "w")
 
 master = {}
-
+cols = {}
 for line in tsv:
     fields = line.rstrip("\n").split("\t")
-    abr = fields[0]
+    if fields[0] == 'cancer_acronym':
+        cols = dict(zip(fields, range(len(fields))))
+        continue
+    abr = fields[cols['cancer_acronym']]
     if 'acronym' in abr:
         continue
-    cancer = fields[1]
+    cancer = fields[cols['description']]
     new_cancer = []
     for i in cancer:
         if i.isupper():
@@ -20,12 +23,16 @@ for line in tsv:
         new_cancer.append(i)
     master[abr] = ''.join(new_cancer)
 
+cols2 = {}
 for line in txt:
     fields = line.rstrip("\n").split("\t")
-    abr= fields[0]
+    if fields[0] == 'acronym':
+        cols2 = dict(zip(fields, range(len(fields))))
+        continue
+    abr = fields[cols2['acronym']]
     if 'acronym' in abr:
         continue
-    cancer = fields[1]
+    cancer = fields[cols2['cancer']]
     new_cancer = []
     for i in cancer:
         if i.isupper():
