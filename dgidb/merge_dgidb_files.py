@@ -10,10 +10,13 @@ file_out = open("dgidb.summaries.bed", "w")
 print("#chromosome\tstart\tstop\tgene\tdrug\tinteraction\tcategories", file=file_out)
 
 category = {}
+cat_cols = {}
 for i in cats_file:
-    line = i.rsplit("\t")
-    gene = line[0]
-    cat = line[3].rstrip()
+    line = i.rstrip("\n").split("\t")
+    if line[0] == 'entrez_gene_symbol':
+        cat_cols = dict(zip(line, range(len(line))))
+    gene = line[cat_cols['entrez_gene_symbol']]
+    cat = line[cat_cols['category']]
     if gene not in category:
         category[gene] = []
     category[gene].append(cat)
@@ -21,11 +24,14 @@ for i in cats_file:
 genes_ids = defaultdict(list)
 interaction = {}
 drugs = {}
+int_cols = {}
 for i in ints_file:
-    line = i.rsplit("\t")
-    gene = line[0] if line[0] != ""  else "none"
-    inter = line[4] if line[4] != ""  else "none"
-    drug = line[7] if line[7] != ""  else "none"
+    line = i.rstrip("\n").split("\t")
+    if line[0] == 'gene_name':
+        int_cols = dict(zip(line, range(len(line))))
+    gene = line[int_cols['gene_name']] if line[int_cols['gene_name']] != ""  else "none"
+    inter = line[int_cols['interaction_types']] if line[int_cols['interaction_types']] != ""  else "none"
+    drug = line[int_cols['drug_name']] if line[int_cols['drug_name']] != ""  else "none"
     if gene not in interaction:
         interaction[gene] = []
     interaction[gene].append(inter)
@@ -53,4 +59,4 @@ for key in coords:
     if key in drugs:
         drgs = set(drugs[key])
     if key in category or key in interaction or key in drugs:
-        print("\t".join(coords[key]) + "\t" + key + "\t" + ",".join(drgs) + "\t" + ",".join(ints) + "\t" + ",".join(cats), file=file_out)
+        print("\t".join(coords[key]) + "\t" + key + "\t" + ",".join(sorted(drgs)) + "\t" + ",".join(sorted(ints)) + "\t" + ",".join(sorted(cats)), file=file_out)
