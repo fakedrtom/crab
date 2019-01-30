@@ -68,6 +68,8 @@ for id in id_score:
 cancers = {}
 for line in abbrs:
     names = line.rstrip("\n").split("\t")
+    if len(names) != 2:
+        print(str(names)+' not formatted properly')
     cancers[names[0]] = names[1]
     
 for id in coords:
