@@ -1,0 +1,378 @@
+acoustic neuroma	SCHW
+acral lentiginous melanoma	ALM
+acral lentigious melanoma	ALM
+acute erythroid leukemia	AEL
+acute leukemia	AL
+acute lymphoblastic leukemia	ALL
+acute lymphocytic leukemia	ALL
+acute myeloid leukemia	AML
+acute promyelocytic leukemia	APML
+adrenal adenoma	AA
+adrenal cortex	AC
+adrenal cortex adenoma	ACA
+adrenal cortex carcinoma	ACC
+adrenal gland pheochromocytoma	PHEO
+adrenocortical carcinoma	ACC
+adult t-cell leukemia	TCLK
+adult b-lymphoblastic leukemia	BCALL
+anaplastic large cell lymphoma	ALCL
+anaplastic oligodendroglioma	AG
+anaplastic thyroid cancer	ATC
+anaplastic thyroid carcinoma	ATC
+aneurysmal bone cyst	ABC
+angiosarcoma	AS
+any cancer type	CANCER
+astrocytoma	AST
+atypical chronic myeloid leukemia	ACML
+alveolar rhabdomyosarcoma	ARHBDS
+b cell lymphoma	BCL
+barrett's adenocarcinoma	BARA
+basal cell carcinoma	BCC
+bile duct adenocarcinoma	CH
+biliary tract cancer	BT
+billiary tract	BT
+bladder	BLCA
+bladder carcinoma	BLCA
+bladder transitional cell	BLTC
+bladder urothelial carcinoma	BLCA
+bone epithelioid hemangioma	BEH
+bone epithelioid hemangioendothelioma	BEH
+bone ewing's sarcoma	EWS
+bone marrow cancer	MM
+brain	B
+brain glioma	G
+brain medulloblastoma	MB
+breast adenocarcinoma	BRCA
+breast cancer	BRCA
+breast carcinoma	BRCA
+breast lobular	BRCAL
+breast luminal	BRCALU
+breast/ovary predisposing	BRCA/OV-PR
+breast secretory carcinoma	SBRCA
+bronchiolo-alveolar adenocarcinoma	BAC
+bronchioloalveolar carcinoma	BAC
+burkitt lymphoma	BLY
+cancer	CANCER
+cancer predisposition	CANCER-PR
+central nervous system	CNS
+central nervous system lymphoma	CNSLY
+cervical adenocarcinoma	CER
+cervical cancer	CER
+cervical squamous cell carcinoma	CESC
+cervix	CER
+cervix squamous cell	CESC
+cholangiocarcinoma	CH
+chondrosarcoma	CS
+chordoma	CHRD
+chronic leukemia	CLL
+chronic lymphocytic leukemia	CLL
+chronic myeloid leukemia	CML
+chronic myelomonocytic leukemia	CMML
+chronic myeloproliferatve neoplasm	CMP
+chronic myeloproliferitve neoplasm	CMP
+chronic myeloproliferative disease	CMP
+chronic myeloproliferative neoplasm	CMP
+chronic neutrophilic leukemia	CNL
+chuvash polycythemia	CP
+clear cell renal cell carcinoma	RCCC
+clear cell sarcoma	CCS
+colon adenocarcinoma	COCA
+colon cancer	COC
+colon carcinoma	COC
+colon carcinoma predisposition	COC-PR
+colon mucinous adenocarcinoma	COMA
+colorectal adenocarcinoma	COREAD
+colorectal adenocarcinoma – predisposing	COREAD-PR
+colorectal cancer	COR
+congenital fibrosarcoma	CFS
+cutaneous melanoma	CM
+cutaneous melanoma predisposition	CM-PR
+cutaneous t-cell lymphoma	CTCL
+dermatofibrosarcoma	DFS
+dermatofibrosarcoma protuberans	DFS
+desmoid fibromatosis	DEST
+desmoid tumor	DEST
+desmoplastic small round cell tumor	DSRCT
+diffuse intrinsic pontine glioma	DIPG
+diffuse large b cell lymphoma	DLBCL
+diffuse large b-cell lymphoma	DLBCL
+digestive tract predisposition	DT-PR
+dysembryoplastic neuroephitelial tumor	DNT
+endocrine system	ES
+endometrial adenocarcinoma	EDA
+endometrial cancer	ED
+endometrial carcinoma	ED
+endometrial hyperplasia	EDH
+endometrial stromal	EDS
+endometrium	ED
+eosinophilic chronic leukemia	ECL
+epithelial ovarian cancer	OVE
+epithelioid hemangioendothelioma	EH
+epithelioid inflammatory myofibroblastic sarcoma	EIM
+erdheim-chester histiocytosis	HISEC
+esophageal cancer	ESCA
+esophageal carcinoma	ESCA
+esophagus	ESCA
+esophagous	ESCA
+esophagus clear cell	ESCC
+esophagous clear cell	ESCC
+esophagus squamous cell	ESSC
+esophagous squamous cell	ESSC
+esophagus adenocarcinoma	ESCA
+esophagous adenocarcinoma	ESCA
+esophagus squamous cell carcinoma	ESSC
+esophagous squamous cell carcinoma	ESSC
+essential thrombocythemia	ET
+estrogen-receptor positive breast cancer	ERBRCA
+ewing sarcoma	EWS
+female germ cell tumor	FGCT
+female reproductive organ cancer	FROC
+fibrosarcoma - predisposing	FIBS-PR
+fibrous histiocytoma	FH
+follicular lymphoma	FL
+follicular thyroid carcinoma	THF
+ganglioglioma	GG
+gastric adenocarcinoma	STAD
+gastric adenosquamous carcinoma	STADS
+gastrointestinal neuroendocrine tumor	GINET
+gastrointestinal stromal	GIST
+gastrointestinal stromal predisposition	GIST-PR
+gastrointestinal stromal tumor	GIST
+glandular pattern ovarian yolk sac tumor	YST
+glioblastoma	GB
+glioblastoma multiforme	GBM
+glioma	G
+hairy cell leukemia	HCL
+hairy-cell leukemia	HCL
+head an neck	HNC
+head an neck squamous	HNSC
+head and neck cancer	HNC
+head and neck carcinoma	HNC
+head and neck squamous cell carcinoma	HNSC
+hemangiopericytoma	HGP
+hematologic cancer	HEMATO
+hematologic malignancies	HEMATO
+hematologic malignancies predisposition	HEMATO-PR
+hepatic adenoma	HA
+hepatic blastoma	HB
+hepatic carcinoma	HC
+hepatic carcinoma predisposition	HC-PR
+hepatocellular carcinoma	HC
+hepatocellular fibrolamellar carcinoma	HFC
+hepatocellular mixed fibrolamellar carcinoma	HMFC
+her2-receptor negative breast cancer	HER2NBRCA
+her2-receptor positive breast cancer	HER2PBRCA
+hodgkin lymphoma	HLY
+hyper eosinophilic advanced snydrome	HES
+inflammatory myofibroblastic	IM
+immflamatory myofibroblastic	IM
+inflammatory breast carcinoma	IBRCA
+inflammatory myofibroblastic tumor	IM
+intrahepatic cholangiocarcinoma	ICH
+invasive bladder transitional cell carcinoma	BLTC
+lagerhans cell histiocytosis	HISLC
+langerhans-cell histiocytosis	
+large b-cell lymphoma	LBCL
+large granular leukemia	LGLK
+laryngeal carcinoma	LC
+laryngeal squamous cell carcinoma	LSC
+leukemia	LK
+liposarcoma	LIP
+lower grade glioma	LGG
+lung	L
+lung acinar adenocarcinoma	LUAAD
+lung adenocarcinoma	LUAD
+lung cancer	L
+lung carcinoma	L
+lung small cell carcinoma	SCLC
+lung squamous cell	LUSC
+lung squamous cell carcinoma	LUSC
+lymphoid leukemia	LL
+lymphoma	LY
+lynch syndrome	LS
+male germ cell tumor	MGCT
+malignant anus melanoma	MAM
+malignant astrocytoma	MA
+malignant glioma	G
+malignant mesothelioma	MESO
+malignant peripheral nerve sheath tumor	MPN
+malignant peripheral nerve sheat tumor	MPN
+malignant pleural mesothelioma	PMESO
+malignant rhabdoid tumor predisposition	MRT-PR
+malignant rhaboid tumor	MRT
+malignant sertoli-leydig cell tumor	SLC
+malt lymphoma	MALT
+mantle cell lymphoma	MCL
+mast cell leukemia	MCLK
+mastocytosis	MAS
+medulloblastoma	MB
+megakaryoblastic leukemia	MKB
+melanoma	M
+meningioma	MEN
+merkel cell carcinoma	MERC
+mesenchymal chondrosarcoma	MCS
+mesothelioma	MESO
+mucosal melanoma	MUCM
+multiple myeloma	MM
+myelodisplasic proliferative syndrome	MDPS
+myelodysplastic syndrome	MDS
+myelodisplasicsyndrome	MDS
+myelofibrosis	MY
+myeloid and lymphoid neoplasms with eosinophilia and abnormalities of pdgfra	MLNEA
+myeloid and lymphoid neoplasms with eosinophilia and abnormalities of pdgfra, pdgfrb, and fgfr1	MLNEA
+myeloma	MYMA
+myelomonocyitic leukemia	MML
+myoepithelioma	MYEP
+myxoid liposarcoma	MLIP
+myxoidfibrosarcoma	MFH
+myxofibrosarcoma	MFH
+myxoid fibrosarcoma	MFH
+myxoma	MYX
+nasopharyngeal	NSPH
+neuroblastoma	NB
+neuroendocrine	NEU
+neuroendocrine tumor	NEU
+neurofibromatosis	NF
+non-hodking lymphoma	NHLY
+non-seminomatous germ cell tumor	NSMGCT
+non-small cell lung	NSCLC
+non-small cell lung carcinoma	NSCLC
+nut midline carcinoma	NMC
+oligodendroglioma	ODG
+oral cavity squamous cell	OCSC
+oral squamous cell carcinoma	OCSC
+oropharynx cancer	OPH
+ororpharynx squamous cell	OPH
+osteosarcoma	OS
+ovarian cancer	OV
+ovarian carcinoma	OV
+ovarian clear cell carcinoma	OVCC
+ovarian cystadenocarcinoma	OVCA
+ovarian granulosa cell tumor	OVG
+ovarian serous carcinoma	OVS
+ovarian serous cystadenocarcinoma	OVSCA
+ovarian sex cord-stromal tumours	OVSCS
+ovary	OV
+ovary clear cell	OVCC
+ovary epithelial cell	OVE
+ovary granulosa cell	OVG
+ovary small cell	OVSC
+pancreas	PA
+pancreas acinar	PAAC
+pancreas adenocarcinoma	PAAD
+pancreas islet	PAIS
+pancreas neuroendocrine	PANC
+pancreatic adenocarcinoma	PAAD
+pancreatic cancer	PA
+pancreatic carcinoma	PA
+pancreatic ductal adenocarcinoma	PDAC
+pancreatic ductal carcinoma	PDAC
+papillary adenocarcinoma	PAD
+papillary renal cell carcinoma	RPC
+papillary thyroid carcinoma	PTC
+paraganglioma	PARG
+parathyroid adenoma	PATH
+parietal lobe ependymoma	PLE
+pediatric fibrosarcoma	PFIBS
+pediatric b-cell acute lymphoblastic leukemia	PBCALL
+pediatric b-lymphoblastic leukemia	PBCALL
+pediatric glioma	PG
+pericytoma	HGP
+peripheral t-cell lymphoma	PTCL
+perypheral t-cell lymphoma	PTCL
+peritoneal mesothelioma	PTNM
+perivascular epithelioid cell	PEC
+peutz-jeghers syndrome	PJM
+pheochromocytoma	PHEO
+pheochromacytoma	PHEO
+pheochromocytoma and paranganglioma	PCPG
+pilocityc astrocytoma	PIA
+pituitary gland adenoma	PIGA
+pleuropulmonary blastoma	PPB
+plexiform neurofibroma	PNF
+polycitemia vera	PV
+polycythemia vera	PV
+precursor b lymphoblastic lymphoma/leukemia	PBLL
+prostate adenocarcinoma	PRAD
+prostate cancer	PRAD
+prostate carcinoma	PRAD
+pseudomyxoma peritonei	PMP
+pten hamartoma tumor syndrome	PHTS
+pten harmatoma tumor syndrome	PHTS
+rectal carcinoma	REC
+rectum cancer	REC
+renal	R
+renal carcinoma	R
+renal cell carcinoma	R
+renal clear cell	RCCC
+renal papillary cell	RPC
+renal predisposition	R-PR
+retinoblastoma	RB
+rhabdoid cancer	MRT
+rhabdomyosarcoma	RHBDS
+salivary gland cancer	SG
+salivary gland carcinoma	SG
+salivary glands	SG
+salivary glands adenoma	SGA
+salivary glands mucoepidermoid	SGM
+sarcoma	S
+schwannoma	SCHW
+scrotum paget's disease	EMPD
+sex-cord gonadal stromal	SCGS
+sezary's disease	CTCL
+skin	SK
+skin melanoma	SK
+skin predisposition	SK-PR
+skin squamous cell carcinoma	SCC
+small cell carcinoma of the ovary hypercalcemic type	SCCOHT
+small cell lung	SCLC
+small intestine	SIN
+small intestine neuroendocrine	SINNE
+soft tissue sarcoma	STS
+solid tumor	SOLID
+solid tumors	SOLID
+solid tumors predisposition	SOLID-PR
+squamous cell carcinoma	SCC
+squamous cell carcinoma predisposition	SCC-PR
+stomach	ST
+stomach adenocarcinoma	STAD
+stomach cancer	ST
+stomach carcinoma	ST
+stomach predisposition	ST-PR
+supratentorial glioblastoma multiforme	SGBM
+synovial sarcoma	SYNS
+systemic mastocytosis	SM
+t-cell acute lymphoblastic leukemia	TCALL
+t-cell large granular lymphocyte leukemia	TCLGLK
+t-cell leukemia	TCLK
+t-cell prolymphocytic leukemia	TCPL
+teratoma	TER
+testis	T
+thymic	THYM
+thymic carcinoma	THYM
+thyroid	TH
+thyroid adenoma	THA
+thyroid cancer	TH
+thyroid carcinoma	THCA
+thyroid follicular	THF
+thyroid hurthle cell carcinoma	THCC
+thyroid medullary	THM
+thyroid medullary carcinoma	THM
+tongue squamous cell	TOSC
+triple-receptor negative breast cancer	TRNBRCA
+tuberous sclerosis	TSC
+tumor of exocrine pancreas	PAAD
+ureter small cell carcinoma	USCC
+urothelial	UTH
+urothelial carcinoma	UTH
+uterine cancer	UCS
+uterine carcinosarcoma	UCS
+uterine corpus endometrial carcinoma	UCEC
+uterine corpus endometroid carcinoma	UCEC
+uterine corpus serous adenocarcinoma	UCSC
+uveal melanoma	UVM
+vagina sarcoma	VS
+von hippel-lindau disease	VHL
+waldenstrom macroglobullinemia	WM
+waldenström's macroglobulinemia	WM
+wilms tumor	WT
