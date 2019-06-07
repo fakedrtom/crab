@@ -5,7 +5,8 @@ from scipy import stats
 
 var_file = open("tmp.civic_variants.bed", "r")
 var_out = open("civic_variants_summaries.bed", "w")
-print("#chromosome\tstart\tstop\tref\talt\tvariant_ID\tvariant_type\tcivic_score\tcivic_per\tn_evidence\tevi_IDs\tevi_types\tmax_level\tevi_directions\tclin_sigs\tmax_rating\torigins\tdiseases", file=var_out)
+abbrs = open("/Users/tom/src/cancer_annotations/cancer_names_abbreviations.txt", "r")
+print("#chromosome\tstart\tstop\tref\talt\tvariant_ID\tvariant_type\tcivic_score\tcivic_per\tn_evidence\tevi_IDs\tevi_types\tmax_level\tevi_directions\tclin_sigs\tmax_rating\torigins\tdiseases\tabbreviations", file=var_out)
 
 coords = {}
 evidences = defaultdict(list)
@@ -28,7 +29,8 @@ for i in var_file:
     varid = line[5]
     vartype = line[6] if line[6] != "" else 'none'
     score = line[7]
-    id_score[varid] = score
+    if score != 'none':
+        id_score[varid] = score
     coords[varid]=[chrom, start, end, ref, alt, varid, vartype, score]
     evi_type = line[8] if line[8] != "" else 'none'
     types[varid].append(evi_type.rstrip())
@@ -63,6 +65,13 @@ scores = []
 for id in id_score:
     scores.append(float(id_score[id]))
 
+cancers = {}
+for line in abbrs:
+    names = line.rstrip("\n").split("\t")
+    if len(names) != 2:
+        print(str(names)+' not formatted properly')
+    cancers[names[0]] = names[1]
+    
 for id in coords:
     max_level = max(levels[id])
     if max_level is 5:
@@ -97,7 +106,16 @@ for id in coords:
     subtypes = set(diseases[id])
     if len(subtypes) > 1 and 'none' in subtypes:
         subtypes.remove('none')
+    abbr = []
+    for s in subtypes:
+        if s == 'none':
+            abbr.append(s)
+        else:
+            if s.lower() in cancers:
+                abbr.append(cancers[s.lower()])
+            if s.lower() not in cancers:
+                print(s.lower()+' not recognized')
     if max_level == 'none':
         num_evi = 0
     score_per = round(stats.percentileofscore(scores, float(coords[id][7])),3)
-    print("\t".join(coords[id]) + "\t" + str(score_per) + "\t" + str(num_evi) + "\t" + ",".join(evi_ids) + "\t" + ",".join(evi_types) + "\t" + max_level + "\t" + ",".join(evi_dirs) + "\t" + ','.join(clin_sigs) + "\t" + str(max_rating) + "\t" + ",".join(origs) + "\t" + ",".join(subtypes), file=var_out)
+    print("\t".join(coords[id]) + "\t" + str(score_per) + "\t" + str(num_evi) + "\t" + ",".join(sorted(evi_ids)) + "\t" + ",".join(sorted(evi_types)) + "\t" + max_level + "\t" + ",".join(sorted(evi_dirs)) + "\t" + ','.join(sorted(clin_sigs)) + "\t" + str(max_rating) + "\t" + ",".join(sorted(origs)) + "\t" + ",".join(sorted(subtypes)) + "\t" + ",".join(sorted(set(abbr))), file=var_out)

@@ -12,39 +12,47 @@ variant_out = open("tmp.civic_variants.bed", "w")
 gene_out = open("tmp.civic_genes.bed", "w")
 
 evidence = {}
+evi_cols = {}
 for i in evi_file:
-    line = i.rsplit("\t")
-    evi_id = line[17]
-    var_id = line[18]
-    evidence_type = line[7]
-    evidence_level = line[9]
-    rating = line[15]
-    disease = line[3]
-    clinical_significance = line[10]
-    evidence_direction = line[8]
-    evidence_civic_url = line[35]
-    origin = line[33]
+    line = i.rstrip("\n").split("\t")
+    if line[0] == 'gene':
+        evi_cols = dict(zip(line, range(len(line))))
+        continue
+    evi_id = line[evi_cols['evidence_id']]
+    var_id = line[evi_cols['variant_id']]
+    evidence_type = line[evi_cols['evidence_type']]
+    evidence_level = line[evi_cols['evidence_level']]
+    rating = line[evi_cols['rating']]
+    disease = line[evi_cols['disease']]
+    clinical_significance = line[evi_cols['clinical_significance']]
+    evidence_direction = line[evi_cols['evidence_direction']]
+    evidence_civic_url = line[evi_cols['evidence_civic_url']]
+    origin = line[evi_cols['variant_origin']]
     if var_id not in evidence:
         evidence[var_id] = []
     evidence[var_id].append([evidence_type, evidence_level, evidence_direction, clinical_significance, rating, evi_id, origin, disease])
 
 genes_ids = defaultdict(list)
 variant = {}
+var_cols = {}
 for i in var_file:
-    line = i.rsplit("\t")
+    line = i.rstrip("\n").split("\t")
     if line[0] == 'variant_id':
+        var_cols = dict(zip(line, range(len(line))))
         continue
-    var_id = line[0]
-    variant_civic_url = line[1]
-    gene = line[2]
+    var_id = line[var_cols['variant_id']]
+    variant_civic_url = line[var_cols['variant_civic_url']]
+    gene = line[var_cols['gene']]
     genes_ids[gene].append(var_id)
-    chrom = line[7]
-    start = int(line[8])-1 if line[8] != ""  else ""
-    end = line[9]
-    ref = line[10]
-    alt = line[11]
-    var_type = line[19]
-    var_score = line[22].rstrip()
+    chrom = line[var_cols['chromosome']]
+    start = int(line[var_cols['start']])-1 if line[var_cols['start']] != ""  else ""
+    end = line[var_cols['stop']]
+    ref = line[var_cols['reference_bases']]
+    alt = line[var_cols['variant_bases']]
+    var_type = line[var_cols['variant_types']]
+    var_score = line[var_cols['civic_actionability_score']]
+    if len(var_score.split(' ')) > 1:
+        var_score = 'none'
     if var_id not in variant:
         variant[var_id] = []
     variant[var_id].append([chrom, str(start), end, ref, alt, var_id, var_type, var_score])
@@ -64,10 +72,14 @@ for i in gene_coords:
     gene = line[3]
     coords[gene.rstrip()]=[chrom, start, end]
 
+sum_cols = {}
 for i in sum_file:
-    line = i.rsplit("\t")
-    gene_civic_url = line[1]
-    gene = line[2]
+    line = i.rstrip("\n").split("\t")
+    if line[0] == 'gene_id':
+        sum_cols = dict(zip(line, range(len(line))))
+        continue
+    gene_civic_url = line[sum_cols['gene_civic_url']]
+    gene = line[sum_cols['name']]
     if gene in coords:
         if gene not in genes_ids:
             print("\t".join(coords[gene]) + "\t" + gene + "\t" + "none\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone\tnone", file=gene_out)
