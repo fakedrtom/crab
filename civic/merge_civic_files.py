@@ -2,10 +2,14 @@ from __future__ import print_function
 import sys
 from collections import defaultdict
 
-evi_file = open("nightly-ClinicalEvidenceSummaries.tsv", "r")
-var_file = open("nightly-VariantSummaries.tsv", "r")
-sum_file = open("nightly-GeneSummaries.tsv", "r")
-gene_coords = open("../ensembl/sorted.ensembl.gene.coords", "r")
+#evi_file = open("nightly-ClinicalEvidenceSummaries.tsv", "r")
+evi_file = open(sys.argv[1], "r")
+#var_file = open("nightly-VariantSummaries.tsv", "r")
+var_file = open(sys.argv[2], "r")
+#sum_file = open("nightly-GeneSummaries.tsv", "r")
+sum_file = open(sys.argv[3], "r")
+#gene_coords = open("../ensembl/sorted.ensembl.gene.coords", "r")
+gene_coords = open(sys.argv[4], "r")
 
 variant_out = open("tmp.civic_variants.bed", "w")
 #print("#chromosome\tstart\tstop\tref\talt\tvariant_id\tvariant_types\tcivic_score\tevidence_type\tevidence_level\tevidence_direction\tclinical_significance\trating\tevidence_id\tvariant_origin\tdisease", file=variant_out)

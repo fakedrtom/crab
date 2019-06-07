@@ -3,9 +3,11 @@ import sys
 from collections import defaultdict
 from scipy import stats
 
-var_file = open("tmp.civic_variants.bed", "r")
+#var_file = open("tmp.civic_variants.bed", "r")
+var_file = open(sys.argv[1], "r")
 var_out = open("civic_variants_summaries.bed", "w")
-abbrs = open("/Users/tom/src/cancer_annotations/cancer_names_abbreviations.txt", "r")
+#abbrs = open("/Users/tom/src/cancer_annotations/cancer_names_abbreviations.txt", "r")
+abbrs = open(sys.argv[2], "r")
 print("#chromosome\tstart\tstop\tref\talt\tvariant_ID\tvariant_type\tcivic_score\tcivic_per\tn_evidence\tevi_IDs\tevi_types\tmax_level\tevi_directions\tclin_sigs\tmax_rating\torigins\tdiseases\tabbreviations", file=var_out)
 
 coords = {}

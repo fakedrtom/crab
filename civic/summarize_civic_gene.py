@@ -3,9 +3,11 @@ import sys
 from collections import defaultdict
 from scipy import stats
 
-gene_file = open("tmp.civic_genes.bed", "r")
+#gene_file = open("tmp.civic_genes.bed", "r")
+gene_file = opne(sys.argv[1], "r")
 gene_out = open("civic_genes_summaries.bed", "w")
-abbrs = open("/Users/tom/src/cancer_annotations/cancer_names_abbreviations.txt", "r")
+#abbrs = open("/Users/tom/src/cancer_annotations/cancer_names_abbreviations.txt", "r")
+abbrs = open(sys.argv[2], "r")
 print("#chromosome\tstart\tstop\tgene\tn_variant\tvariant_IDs\tn_evidence\tevidence_IDs\tmax_evidence\tmax_rating\tevidence_type\tevidence_direction\tclinical_significance\tvariant_origin\tdisease\tabbreviations\tmax_score\tcivic_per", file=gene_out)
 
 coords = {}
