@@ -54,7 +54,7 @@ for i in var_file:
     ref = line[var_cols['reference_bases']]
     alt = line[var_cols['variant_bases']]
     var_type = line[var_cols['variant_types']]
-    var_score = line[var_cols['civic_actionability_score']]
+    var_score = line[var_cols['civic_variant_evidence_score']]
     if len(var_score.split(' ')) > 1:
         var_score = 'none'
     if var_id not in variant:

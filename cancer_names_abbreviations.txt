@@ -184,6 +184,7 @@ lung acinar adenocarcinoma	LUAAD
 lung adenocarcinoma	LUAD
 lung cancer	L
 lung carcinoma	L
+lung non-small cell carcinoma	NSCLC
 lung small cell carcinoma	SCLC
 lung squamous cell	LUSC
 lung squamous cell carcinoma	LUSC
@@ -287,6 +288,7 @@ pheochromocytoma	PHEO
 pheochromacytoma	PHEO
 pheochromocytoma and paranganglioma	PCPG
 pilocityc astrocytoma	PIA
+pilocytic astrocytoma	PIA
 pituitary gland adenoma	PIGA
 pleuropulmonary blastoma	PPB
 plexiform neurofibroma	PNF

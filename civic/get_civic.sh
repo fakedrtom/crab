@@ -10,9 +10,9 @@ curl -o nightly-ClinicalEvidenceSummaries.tsv -L https://civicdb.org/downloads/n
 
 #Merge CIViC files into civic_variants, civic_genes, and civic_genes_summaries bed files
 echo "Creating civic_genes, civic_gene_summaries, and civic_variants BED files"
-python merge_civic_files.py
-python summarize_civic_gene.py
-python summarize_civic_variant.py
+python merge_civic_files.py nightly-ClinicalEvidenceSummaries.tsv nightly-VariantSummaries.tsv nightly-GeneSummaries.tsv ../sorted.ensembl.gene.coords
+python summarize_civic_gene.py tmp.civic_genes.bed ../cancer_names_abbreviations.txt
+python summarize_civic_variant.py tmp.civic_variants.bed ../cancer_names_abbreviations.txt
 
 #Using gsort, sort and bgzip the bed files, remove the extra, non-gzipped copy of the file
 echo "Sorted and gzipping the BED files"

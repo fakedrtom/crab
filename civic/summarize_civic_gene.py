@@ -4,7 +4,7 @@ from collections import defaultdict
 from scipy import stats
 
 #gene_file = open("tmp.civic_genes.bed", "r")
-gene_file = opne(sys.argv[1], "r")
+gene_file = open(sys.argv[1], "r")
 gene_out = open("civic_genes_summaries.bed", "w")
 #abbrs = open("/Users/tom/src/cancer_annotations/cancer_names_abbreviations.txt", "r")
 abbrs = open(sys.argv[2], "r")
