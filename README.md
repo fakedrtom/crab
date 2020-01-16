@@ -19,9 +19,10 @@ is required:
 + Download and install vcfanno (for directions refer to the
 [repo](https://github.com/brentp/vcfanno))
 + The source file(s) containing the annotation information that is desired to
-be added to a VCF.
+be added to a VCF (generally a BED or VCF file(s)).
 + A vcfanno configuration file that directs vcfanno to the source file(s) and
-the desired information within the source file(s) for annotation.
+the desired information within the source file(s) (and designations for them)
+for annotation.
 
 We have provided an example vcfanno configuration file that will
 annotate a VCF with information that has been parsed from
